@@ -6,10 +6,10 @@ A modern, full-stack real-time chat application with a bold, neon-inspired UI.
 ## Visual Overview
 
 ### Login Screen
-![Login Screenshot](frontend/screenshot-login.png)
+![Login Screenshot](img-1.png)
 
 ### Chat Interface
-![Chat Screenshot](frontend/screenshot-chat.png)
+![Chat Screenshot](img-2.png)
 
 ## Architecture
 - **Backend:** Node.js, Express, Socket.io for real-time messaging and user presence
