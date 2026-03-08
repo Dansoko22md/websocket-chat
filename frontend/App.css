@@ -1,0 +1,370 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;800&family=Playfair+Display:ital,wght@0,700;0,900;1,700&display=swap');
+
+/* --- Variables (Charte "Dark Mode Premium") --- */
+:root {
+  --bg-dark: #0d0d0d;          /* Fond principal noir profond */
+  --bg-card: #151515;          /* Fond des panneaux/cartes */
+  --grid-line: #1f1f1f;        /* Lignes du quadrillage très discrètes */
+  --text-main: #fcfcfc;        /* Texte principal blanc cassé */
+  --text-muted: #888888;       /* Texte secondaire gris */
+  --accent-gold: #f8df72;      /* Le jaune/or caractéristique de tes images */
+  --border-subtle: #262626;    /* Bordures sombres */
+  --shadow-dark: 0 20px 40px rgba(0, 0, 0, 0.5); /* Ombre profonde */
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Inter', system-ui, sans-serif;
+  background-color: var(--bg-dark);
+  color: var(--text-main);
+  overflow: hidden;
+}
+
+/* --- Arrière-plan quadrillé sombre --- */
+.app-container {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  background-image: 
+    linear-gradient(var(--grid-line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
+  background-size: 50px 50px;
+}
+
+/* --- Typographie Titres (Serif) --- */
+.serif-title {
+  font-family: 'Playfair Display', serif;
+  font-weight: 900;
+  letter-spacing: -1px;
+  line-height: 1.1;
+  color: var(--accent-gold); /* Les grands titres passent en Or */
+}
+
+/* --- Écran de Connexion --- */
+.login-mode {
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+.login-card {
+  max-width: 600px;
+  text-align: center;
+}
+
+.login-card h1 {
+  font-size: 4.5rem;
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+}
+
+.login-card h1 i {
+  font-style: italic;
+  color: var(--text-main); /* Le mot en italique en blanc pour contraster */
+}
+
+.login-subtitle {
+  font-size: 1.1rem;
+  color: var(--text-muted);
+  margin-bottom: 3rem;
+  line-height: 1.5;
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.login-form-container {
+  background: var(--bg-card);
+  padding: 2.5rem;
+  border-radius: 24px;
+  box-shadow: var(--shadow-dark);
+  border: 1px solid var(--border-subtle);
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  width: 100%;
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.login-form-container .header-pill {
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  text-align: left;
+}
+
+.login-card input {
+  width: 100%;
+  padding: 1.2rem;
+  border-radius: 12px;
+  border: 1px solid var(--border-subtle);
+  background: var(--bg-dark);
+  color: var(--text-main);
+  font-size: 1rem;
+  font-weight: 500;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.login-card input:focus {
+  border-color: var(--accent-gold);
+}
+
+.btn-black {
+  width: 100%;
+  padding: 1.2rem;
+  border-radius: 12px;
+  border: none;
+  background: var(--accent-gold);
+  color: var(--bg-dark);
+  font-weight: 800;
+  font-size: 1rem;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: transform 0.2s, opacity 0.2s;
+}
+
+.btn-black:hover {
+  transform: translateY(-2px);
+  opacity: 0.9;
+}
+
+/* --- Layout Principal du Chat --- */
+.chat-layout {
+  display: flex;
+  flex: 1;
+  height: calc(100vh - 60px);
+  max-width: 1400px;
+  margin: 20px auto 0 auto;
+  width: 100%;
+  padding: 0 2rem;
+  gap: 2rem;
+}
+
+/* --- Sidebar --- */
+.sidebar {
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.sidebar h2 {
+  font-size: 2.5rem;
+  text-transform: uppercase;
+}
+
+.active-db-text {
+  font-size: 0.7rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  letter-spacing: 1px;
+}
+
+.user-list {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.user-pill {
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  border: 1px solid var(--border-subtle);
+  background: var(--bg-card);
+  color: var(--text-muted);
+}
+
+/* Utilisateur actif (en Or) */
+.user-pill.current-user {
+  background: var(--accent-gold);
+  color: var(--bg-dark);
+  border-color: var(--accent-gold);
+}
+
+/* --- Zone Principale du Chat --- */
+.chat-main {
+  flex: 1;
+  background: var(--bg-card);
+  border-radius: 24px;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--border-subtle);
+  box-shadow: var(--shadow-dark);
+  overflow: hidden;
+}
+
+.chat-header {
+  padding: 1.5rem 2rem;
+  border-bottom: 1px solid var(--border-subtle);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(21, 21, 21, 0.95); /* Effet verre très léger */
+}
+
+.chat-header-title {
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.messages-container {
+  flex: 1;
+  padding: 2rem;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  background: var(--bg-dark); /* On remet le fond noir profond pour la zone de texte */
+}
+
+.message {
+  display: flex;
+  flex-direction: column;
+  max-width: 70%;
+}
+
+.message-sender {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  margin-bottom: 6px;
+  margin-left: 4px;
+}
+
+.message-bubble {
+  padding: 16px 20px;
+  border-radius: 16px;
+  line-height: 1.5;
+  font-weight: 500;
+}
+
+.message-time {
+  font-size: 0.7rem;
+  opacity: 0.5;
+  display: block;
+  text-align: right;
+  margin-top: 8px;
+  font-weight: 600;
+}
+
+/* Messages des autres */
+.other-message {
+  align-self: flex-start;
+}
+.other-message .message-bubble {
+  background: var(--bg-card);
+  color: var(--text-main);
+  border: 1px solid var(--border-subtle);
+  border-bottom-left-radius: 4px;
+}
+
+/* Mes messages (Style mis en valeur) */
+.my-message {
+  align-self: flex-end;
+}
+.my-message .message-bubble {
+  background: #1a1a1a;
+  color: var(--accent-gold); /* Texte en or pour tes messages */
+  border: 1px solid #333;
+  border-bottom-right-radius: 4px;
+}
+
+/* Messages Système */
+.system-message {
+  align-self: center;
+  max-width: 90%;
+  margin: 1rem 0;
+}
+.system-message span {
+  font-size: 0.7rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--bg-dark);
+  background: var(--text-muted);
+  padding: 6px 14px;
+  border-radius: 20px;
+}
+
+/* Zone de saisie */
+.input-area {
+  padding: 1.5rem 2rem;
+  background: var(--bg-card);
+  border-top: 1px solid var(--border-subtle);
+  display: flex;
+  gap: 1rem;
+}
+
+.input-area input {
+  flex: 1;
+  padding: 1rem 1.5rem;
+  border-radius: 12px;
+  border: 1px solid var(--border-subtle);
+  background: var(--bg-dark);
+  color: var(--text-main);
+  font-size: 1rem;
+  font-weight: 500;
+  outline: none;
+  transition: all 0.2s;
+}
+
+.input-area input:focus {
+  border-color: var(--accent-gold);
+}
+
+.input-area button {
+  width: 56px;
+  height: 56px;
+  border-radius: 12px;
+  border: none;
+  background: var(--accent-gold);
+  color: var(--bg-dark);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.input-area button:disabled {
+  opacity: 0.2;
+  background: var(--text-muted);
+  cursor: not-allowed;
+}
+
+.input-area button:not(:disabled):hover {
+  transform: scale(1.05);
+}
+
+/* --- Footer --- */
+.app-footer {
+  text-align: center;
+  padding: 15px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--text-muted);
+}
+
+.app-footer a {
+  color: var(--accent-gold);
+  text-decoration: none;
+}
